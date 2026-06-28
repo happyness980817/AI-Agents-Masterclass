@@ -136,6 +136,32 @@ summarization_task:
   output_file: output/summary.md
   create_directory: true
 
+korean_summary_translation_task:
+  description: >
+    Translate the complete article summaries produced by the summarization task
+    into natural, publication-ready Korean.
+
+    Translation requirements:
+    1. Translate every headline, section title, summary, bullet, and label.
+    2. Preserve the original markdown hierarchy and article ordering.
+    3. Preserve all facts, numbers, dates, names, URLs, and source attribution.
+    4. Use natural Korean news-writing conventions instead of literal phrasing.
+    5. Do not summarize, omit, add, or editorialize any information.
+    6. Keep publication names and proper nouns in their commonly used Korean
+       form, adding the original spelling only when it improves clarity.
+
+  expected_output: >
+    A complete Korean translation of the article summaries in markdown.
+    The output must preserve all summary levels, links, attribution, factual
+    detail, and article ordering, and must contain no untranslated English prose
+    except proper nouns, publication names, and URLs where appropriate.
+  agent: korean_translator_agent
+  context:
+    - summarization_task
+  markdown: true
+  output_file: output/summary_ko.md
+  create_directory: true
+
 final_report_assembly_task:
   description: >
     Create the final, publication-ready markdown news briefing by combining all 
@@ -229,6 +255,9 @@ final_report_assembly_task:
     ---
 
   agent: curator_agent
+  context:
+    - content_harvesting_task
+    - summarization_task
   markdown: true
   output_file: output/final_report.md
   create_directory: true
@@ -253,6 +282,8 @@ korean_translation_task:
     English prose except proper nouns, publication names, and URLs where
     appropriate.
   agent: korean_translator_agent
+  context:
+    - final_report_assembly_task
   markdown: true
   output_file: output/final_report_ko.md
   create_directory: true

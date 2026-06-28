@@ -36,6 +36,10 @@ class NewsReaderAgent:
         return Task(config=self.tasks_config["summarization_task"])
 
     @task
+    def korean_summary_translation_task(self):
+        return Task(config=self.tasks_config["korean_summary_translation_task"])
+
+    @task
     def final_report_assembly_task(self):
         return Task(config=self.tasks_config["final_report_assembly_task"])
 

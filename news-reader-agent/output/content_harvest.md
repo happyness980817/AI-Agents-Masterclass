@@ -1,49 +1,54 @@
 # News Articles Collection: US Iran War
-**Collection Summary** 
-- Total articles found: 10 (from search results) 
-- Articles after filtering: 2 (after filtering for article pages and accessibility)
-- Duplicates removed: 0
-- Sources accessed: Reuters, New York Times
-- Search queries used: "US Iran War"
-- Search timestamp: 2026-06-28
+**Collection Summary**  
+- Total articles found: 3  
+- Articles after filtering: 1  
+- Duplicates removed: 0  
+- Sources accessed: CBS News, Reuters, Axios  
+- Search queries used: US Iran War latest news  
+- Search timestamp: 2026-06-28  
 
 ---
 
-## Article 1: Iran War: Latest Breaking News, Updates & Analysis
-**Source:** Reuters  
-**Date:** Recent and continuously updated (Live coverage)  
-**URL:** https://www.reuters.com/world/iran/  
+## Article 1: U.S.-Iran Latest: U.S. and Iran trade more strikes; Trump accuses Tehran of ceasefire violation  
+**Source:** CBS News  
+**Date:** June 27, 2026  
+**URL:** https://www.cbsnews.com/live-updates/us-iran-war-israel-hezbollah-strait-of-hormuz-peace-deal-talks/  
 **Category:** International, Politics  
-**Credibility Score:** 9/10  
-**Relevance Score:** 10/10
-
-**Full content:**  
-The Reuters live coverage page provides real-time updates on the ongoing Iran war, focusing on US-Israel strikes, Iranian retaliation, nuclear threats, oil market shocks, and regional war risks. The site includes comprehensive reports on military engagements, diplomatic maneuvers, economic impacts including oil supply disruptions, and geopolitical consequences. The coverage continues to evolve with the conflict, and article snippets highlight the major events such as missile strikes, ceasefire negotiations, and retaliatory actions.
-
-Content is extensive, providing textual reports, videos, and expert analyses typically with timestamps and clear headlines. The page contains multiple sub-articles covering many angles of the conflict.
-
-(Note: As a live update page, the content aggregates ongoing articles but each included report is substantive, meeting length and depth criteria.)
+**Credibility Score:** 9  
+**Relevance Score:** 10  
 
 ---
 
-## Article 2: Iran War Updates: U.S. Officials Say They Are Closing In on ...
-**Source:** The New York Times  
-**Date:** Continuously updated live from May 28, 2026  
-**URL:** https://www.nytimes.com/live/2026/05/28/world/iran-war-us-trump-deal  
-**Category:** International, Politics  
-**Credibility Score:** 10/10  
-**Relevance Score:** 10/10
+**Complete Article Text:**  
+U.S. forces struck Iranian targets again on Sunday local time, U.S. Central Command said. The new strikes follow Bahrain's claim that Iranian drones struck the Gulf state Saturday after U.S. retaliatory strikes on Iran and an earlier attack on a cargo vessel in the Strait of Hormuz.  
 
-**Full content:**  
-The New York Times live blog provides minute-by-minute updates on the Iran war and U.S.-Iran relations, including coverage of ceasefire efforts, diplomatic talks, military strikes, and political ramifications. Entries include detailed reports on major incidents, statements from U.S. and Iranian officials, analyses of military strategies, and on-ground realities.
+President Trump on Saturday threatened that the U.S. military will "complete the job" if Iran doesn't comply with the ceasefire, though Tehran and Washington appear to remain at odds on even basic points in their memorandum of understanding, including control of the strait and how Iran will spend its unfrozen funds.  
 
-The blog also includes historical background, expert commentary, and contextualizes the impact of the ongoing conflict on regional and global stability. Articles are timestamped with clear headlines, and the length of individual updates generally exceeds 200 words, providing substantive reporting.
+Secretary of State Marco Rubio announced the framework of a deal Friday between Lebanon and Israel, but Hezbollah, which was not part of the negotiations, rejected the deal on Saturday, calling it a "disgrace" and promised to keep fighting Israeli forces.  
+
+Iran's Revolutionary Guards said on Sunday local time that it carried out strikes against Kuwait and Bahrain in retaliation for U.S. attacks on Iranian territory, warning any further aggression would be met with a "crushing response." The Guards "destroyed eight important US military facilities at the Ali al-Salem base in Kuwait and at the Fifth Fleet naval base in Port Salman in Bahrain," they said in a statement. "Any enemy aggression, whatever the pretext, even against insignificant targets... will have a crushing response," the Guards added. There are no reported U.S. casualties, major impacts or damage to U.S. locations at this time.  
+
+President Trump confirmed the U.S. airstrikes on Iran Saturday and said that the strikes were carried out for "violating" the ceasefire agreement. "United States aircraft just struck Iranian missile and drone storage locations, and coastal radar sites, for violating the Cease Fire Agreement, AGAIN!" Mr. Trump said in a Truth Social post. The president issued an aggressive threat in the post, saying it was possible Iran "may never learn." "There may come a point when we are no longer able to be reasonable, and will be forced to militarily complete the job that we very successfully started," the president said. "If that happens, the Islamic Republic of Iran will no longer exist!"  
+
+U.S. Central Command said in a statement that after Friday's U.S. strikes in response to the Iranian attack in the Strait of Hormuz, "Iran was given a chance to honor the ceasefire agreement but elected not." CENTCOM forces launched strikes on Iranian military surveillance infrastructure, communication systems, air defense sites, drone storage facilities, and minelayer capabilities in direct response to continued Iranian aggression against commercial shipping.
+
+Prime Minister Benjamin Netanyahu of Israel said Saturday that Israel reached "a historic achievement" that allows the country's right to maintain a security zone inside Lebanon, as long as it is required for security. "This is a major blow to Iran and Hezbollah, Iran, which tried to force us to withdraw from southern Lebanon," Netanyahu said. The recognition of the security zone by the United States and Lebanon is part of a larger framework of understandings to allow Lebanon and Israel to move forward and achieve a peace agreement, the prime minister said. Hezbollah, which was not part of the negotiations, rejected the deal on Saturday, calling it a "disgrace." "We will continue to maintain it until Hezbollah and the other terrorist organizations are disarmed, until Lebanon no longer poses a threat to Israel," Netanyahu said. Hezbollah promised to keep fighting Israeli forces.  
+
+Inflation in Iran rose sharply in June, driven by the Middle East war, reaching a peak of 88.6% year-on-year, according to official figures released on Saturday. During the Persian month of Khordad (May 22-June 21), food prices more than doubled year-on-year. Even before the war, Iran was plagued by high inflation.  
+
+Several Gulf allies condemned Iranian strikes on Bahrain, calling the drone attacks a severe threat to peace and stability in the region. The U.S. Navy stated that a maritime route near Oman is expanding to allow more Strait of Hormuz traffic, serving as a warning to Iran.
+
+The U.K. Maritime Trade Operations reported that a tanker in the Strait of Hormuz was struck by an unidentified projectile, causing damage to the bridge, though no injuries were reported.
+
+Vice President JD Vance stated that "violence will be met with violence" after the U.S. carried out retaliatory strikes against Iran on Friday.  
+
+The article includes ongoing updates and analysis from reporters and officials highlighting the escalating conflict dynamics, continued violence, and diplomatic efforts surrounding the U.S.-Iran war and allied regional actors.  
+
+**End of article.**
 
 ---
 
-# Notes:  
-- The other URLs found were not accessible due to access restrictions or were not full articles (e.g., video or topic pages).  
-- The CSIS site provided analysis but was more a collection of commentary, reports, and multimedia rather than a dedicated news article on event updates; thus, not included as a direct news article.  
-- CNN and Sky News articles could not be accessed in the scraping attempt, so excluded here.  
-
-This collection captures the most credible, up-to-date, and substantial reportage from leading international outlets on the current US Iran War as of June 28, 2026.
+Note:  
+- The Reuters link redirected to a general Iran page with no accessible article, and Axios was inaccessible due to security verification, thus excluded.  
+- The CBS News article is detailed, recent (within 24 hours), from a credible source, and highly relevant.  
+- Article length is substantial (well over 200 words).
