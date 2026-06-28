@@ -232,3 +232,27 @@ final_report_assembly_task:
   markdown: true
   output_file: output/final_report.md
   create_directory: true
+korean_translation_task:
+  description: >
+    Translate the complete final news briefing produced by the previous task
+    into natural, publication-ready Korean.
+
+    Translation requirements:
+    1. Translate every headline, section title, paragraph, bullet, and caption.
+    2. Preserve the original markdown hierarchy and overall document structure.
+    3. Preserve all facts, numbers, dates, names, URLs, and source attribution.
+    4. Use natural Korean news-writing conventions instead of literal phrasing.
+    5. Do not summarize, omit, add, or editorialize any information.
+    6. Keep publication names and proper nouns in their commonly used Korean
+       form, adding the original spelling only when it improves clarity.
+
+  expected_output: >
+    A complete Korean translation of the final news briefing in markdown.
+    The output must preserve the source report's sections, links, attribution,
+    factual detail, and editorial emphasis, and must contain no untranslated
+    English prose except proper nouns, publication names, and URLs where
+    appropriate.
+  agent: korean_translator_agent
+  markdown: true
+  output_file: output/final_report_ko.md
+  create_directory: true

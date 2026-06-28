@@ -4,23 +4,28 @@ dotenv.load_dotenv()
 
 from crewai import Crew, Agent, Task
 from crewai.project import CrewBase, agent, task, crew
-from tools import count_letters
-
+from tools import search_tool, scrape_tool
 
 @CrewBase
 class NewsReaderAgent:
 
     @agent
     def news_hunter_agent(self):
-        return Agent(config=self.agents_config["news_hunter_agent"])
+        return Agent(config=self.agents_config["news_hunter_agent"],
+        tools=[search_tool, scrape_tool])
 
     @agent
     def summarizer_agent(self):
-        return Agent(config=self.agents_config["summarizer_agent"])
+        return Agent(config=self.agents_config["summarizer_agent"],
+        tools=[scrape_tool])
 
     @agent
     def curator_agent(self):
         return Agent(config=self.agents_config["curator_agent"])
+
+    @agent
+    def korean_translator_agent(self):
+        return Agent(config=self.agents_config["korean_translator_agent"])
 
     @task
     def content_harvesting_task(self):
@@ -34,6 +39,10 @@ class NewsReaderAgent:
     def final_report_assembly_task(self):
         return Task(config=self.tasks_config["final_report_assembly_task"])
 
+    @task
+    def korean_translation_task(self):
+        return Task(config=self.tasks_config["korean_translation_task"])
+
     @crew
     def crew(self):
         return Crew(
@@ -42,4 +51,7 @@ class NewsReaderAgent:
             verbose=True,
         )
 
-NewsReaderAgent().crew().kickoff()
+result = NewsReaderAgent().crew().kickoff(inputs={"topic": "US Iran War"})
+
+for task_output in result.tasks_output:
+    print(task_output)
