@@ -36,6 +36,12 @@ class JobList(BaseModel):
     jobs: List[Job]
 
 
+class MatchedJob(BaseModel):
+    job: Job
+    match_score: int
+    reason: str
+
+
 class RankedJob(BaseModel):
     job: Job
     match_score: int
