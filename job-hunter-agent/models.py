@@ -1,5 +1,5 @@
 from typing import List
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from datetime import date
 
 
@@ -30,6 +30,21 @@ class Job(BaseModel):
     hiring_industry: str | None = None
     source_listing_url: str | None = None
     full_raw_job_description: str | None = None
+
+    @field_validator("date_listed", mode="before")
+    @classmethod
+    def normalize_missing_date(cls, value):
+        if isinstance(value, str) and value.strip().lower() in {
+            "",
+            "n/a",
+            "na",
+            "none",
+            "not provided",
+            "not available",
+            "unknown",
+        }:
+            return None
+        return value
 
 
 class JobList(BaseModel):
