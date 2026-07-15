@@ -5,6 +5,8 @@ from crewai import Agent
 from crewai import LLM
 from pydantic import BaseModel
 from tools import web_search_tool
+from seo_crew import SeoCrew
+from virality_crew import ViralityCrew
 
 
 class BlogPost(BaseModel):
@@ -43,8 +45,8 @@ class ContentPipelineState(BaseModel):
 
     # Content
     blog_post: BlogPost | None = None
-    tweet: str = ""
-    linkedin_post: str = ""
+    tweet: Tweet | None = None
+    linkedin_post: LinkedInPost | None = None
 
 
 class ContentPipelineFlow(Flow[ContentPipelineState]):
@@ -107,7 +109,7 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
 
         if blog_post is None:
             self.typed_state.blog_post = llm.call(f"""
-            Make a blog post on the topic {self.typed_state.topic} using the following research:
+            Make a blog post with good SEO scores on the topic {self.typed_state.topic} using the following research:
 
             <research>
             ================
@@ -139,33 +141,122 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
     def handle_make_tweet(self):
         # If a tweet has been made, show the old one to the AI and ask it to improve the tweet.
         # Else, just ask it to create one.
-        print("Writing a tweet post...")
+
+        tweet = self.typed_state.tweet
+
+        llm = LLM(model="openai/o4-mini", response_format=Tweet)
+
+        if tweet is None:
+            self.typed_state.tweet = llm.call(f"""
+            Make a tweet that could go viral on the topic {self.typed_state.topic} using the following research:
+
+            <research>
+            ================
+            {self.typed_state.research}
+            ================
+            </research>
+            """)
+
+        else:
+            self.typed_state.tweet = llm.call(f"""
+            You wrote this tweet on {self.typed_state.topic}, but it does not have a good virality score because of {self.typed_state.score.reason if self.typed_state.score else "it needs improvement"} 
+            
+            Improve it.
+
+            <tweet>
+            {self.typed_state.tweet.model_dump_json()}
+            </tweet>
+
+            Use the following research.
+
+            <research>
+            ================
+            {self.typed_state.research}
+            ================
+            </research>
+            """)
 
     @listen(or_("make_linkedin_post", "remake_linkedin_post"))
     def handle_make_linkedin(self):
         # If a linkedin post has been made, show the old one to the AI and ask it to improve the post.
         # Else, just ask it to create one.
-        print("Writing a linkedin post...")
+
+        linkedin_post = self.typed_state.linkedin_post
+
+        llm = LLM(model="openai/o4-mini", response_format=LinkedInPost)
+
+        if linkedin_post is None:
+            self.typed_state.linkedin_post = llm.call(f"""
+            Make a blog post on the topic {self.typed_state.topic} using the following research:
+
+            <research>
+            ================
+            {self.typed_state.research}
+            ================
+            </research>
+            """)
+
+        else:
+            self.typed_state.linkedin_post = llm.call(f"""
+            You wrote this linkedin post on {self.typed_state.topic}, but it does not have a good virality score because of {self.typed_state.score.reason if self.typed_state.score else "it needs improvement"} 
+            
+            Improve it.
+
+            <linkedin post>
+            {self.typed_state.linkedin_post.model_dump_json()}
+            </linkedin post>
+
+            Use the following research.
+
+            <research>
+            ================
+            {self.typed_state.research}
+            ================
+            </research>
+            """)
 
     @listen(handle_make_blog)
     def check_seo(self):
-        print(self.typed_state.blog_post)
-        print(self.typed_state.blog_post)
-        print("============")
-        print(self.typed_state.research)
         print("Checking Blog SEO...")
-        self.typed_state.score = Score(score=8, reason="SEO check passed.")
+        result = (
+            SeoCrew()
+            .crew()
+            .kickoff(
+                inputs={
+                    "topic": self.typed_state.topic,
+                    "blog_post": self.typed_state.blog_post.model_dump_json(),
+                }
+            )
+        )
+        self.typed_state.score = result.pydantic
 
     @listen(or_(handle_make_tweet, handle_make_linkedin))
     def check_virality(self):
         print("Checking Virality...")
-        self.typed_state.score = Score(score=8, reason="Virality check passed.")
+        result = (
+            ViralityCrew()
+            .crew()
+            .kickoff(
+                inputs={
+                    "topic": self.typed_state.topic,
+                    "content_type": self.typed_state.content_type,
+                    "content": (
+                        self.typed_state.tweet
+                        if self.typed_state.content_type == "tweet"
+                        else self.typed_state.linkedin_post
+                    ),
+                }
+            )
+        )
+        self.typed_state.score = result.pydantic
 
     @router(or_(check_seo, check_virality))
     def score_router(self):
 
         content_type = self.typed_state.content_type
         score = self.typed_state.score.score if self.typed_state.score else 0
+
+        print(score)
 
         if score >= 8:
             return "check_passed"
@@ -188,7 +279,7 @@ flow.plot()
 
 flow.kickoff(
     inputs={
-        "content_type": "tweet",
+        "content_type": "blog",
         "topic": "AI Dog Training",
     },
 )
