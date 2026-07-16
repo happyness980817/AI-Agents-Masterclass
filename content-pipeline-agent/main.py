@@ -241,9 +241,9 @@ class ContentPipelineFlow(Flow[ContentPipelineState]):
                     "topic": self.typed_state.topic,
                     "content_type": self.typed_state.content_type,
                     "content": (
-                        self.typed_state.tweet
+                        self.typed_state.tweet.model_dump_json()
                         if self.typed_state.content_type == "tweet"
-                        else self.typed_state.linkedin_post
+                        else self.typed_state.linkedin_post.model_dump_json()
                     ),
                 }
             )
